@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C4TH - Create For the Human | AI & Automation Agency</title>
+  <style>
+    :root {
+      --primary-orange: #FF5630;
+      --primary-orange-gradient: linear-gradient(90deg, #FF5630, #FF8B00);
+      --dark-bg: #1E1E1E;
+      --text-light: #FFFFFF;
+      --text-gray: #A0A0A0;
+      --spacing-section: 120px 0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    header {
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      background-color: rgba(30, 30, 30, 0.9);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      height: 40px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: var(--primary-orange);
+    }
+    
+    .cta-button {
+      background: var(--primary-orange-gradient);
+      color: var(--text-light);
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+    
+    .hero {
+      padding: 180px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(255, 86, 48, 0.2), transparent 60%);
+      top: -20%;
+      right: -20%;
+      z-index: -1;
+    }
+    
+    .hero-content {
+      max-width: 650px;
+    }
+    
+    h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    
+    .highlight {
+      background: var(--primary-orange-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--text-gray);
+      margin-bottom: 40px;
+    }
+    
+    .services {
+      padding: var(--spacing-section);
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 80px;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    .service-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 40px;
+      transition: transform 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .service-icon {
+      color: var(--primary-orange);
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .approach {
+      padding: var(--spacing-section);
+      background-color: rgba(30, 30, 30, 0.5);
+    }
+    
+    .approach-content {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    
+    .approach-text {
+      flex: 1;
+    }
+    
+    .approach-image {
+      flex: 1;
+      position: relative;
+    }
+    
+    .approach-img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    .approach-img-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255, 86, 48, 0.3), transparent);
+      border-radius: 8px;
+    }
+    
+    .stats {
+      padding: var(--spacing-section);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      background: var(--primary-orange-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    
+    .testimonials {
+      padding: var(--spacing-section);
+      background-color: rgba(30, 30, 30, 0.5);
+    }
+    
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .testimonial-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .testimonial-quote {
+      font-size: 1.25rem;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    
+    .client-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    
+    .client-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    .client-name {
+      font-weight: 600;
+    }
+    
+    .client-position {
+      color: var(--text-gray);
+      font-size: 0.9rem;
+    }
+    
+    .cta-section {
+      padding: 100px 0;
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+    }
+    
+    .cta-text {
+      color: var(--text-gray);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    
+    footer {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 80px 0 40px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+    
+    .footer-logo {
+      height: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-description {
+      color: var(--text-gray);
+      margin-bottom: 24px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .social-icon {
+      background-color: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary-orange);
+    }
+    
+    .footer-title {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: var(--text-gray);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-orange);
+    }
+    
+    .copyright {
+      text-align: center;
+      color: var(--text-gray);
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <img src="/api/placeholder/180/50" alt="C4TH Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Our Approach</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="cta-button">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>AI & Automation <span class="highlight">Created For Humans</span></h1>
+        <p class="hero-subtitle">We design intelligent solutions that augment human capabilities, not replace them. Transforming businesses through human-centered AI.</p>
+        <a href="#" class="cta-button">Discover Our Approach</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Our <span class="highlight">Services</span></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-title">AI Strategy Consulting</h3>
+          <p>We help businesses develop comprehensive AI strategies aligned with human needs and business objectives.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3 class="service-title">Process Automation</h3>
+          <p>Streamline operations with intelligent automation that enhances human productivity and eliminates tedious tasks.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🧠</div>
+          <h3 class="service-title">Custom AI Solutions</h3>
+          <p>Develop tailored AI applications that solve specific business challenges while prioritizing human experience.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3 class="service-title">Data Analytics</h3>
+          <p>Transform your data into actionable insights with advanced analytics that empower human decision-making.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3 class="service-title">AI Implementation</h3>
+          <p>Seamless integration of AI technologies into your existing systems with a focus on human-computer interaction.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛠️</div>
+          <h3 class="service-title">Training & Support</h3>
+          <p>Comprehensive training programs that empower your team to work effectively alongside AI technologies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach Section -->
+  <section class="approach">
+    <div class="container">
+      <h2 class="section-title">Our <span class="highlight">Approach</span></h2>
+      <div class="approach-content">
+        <div class="approach-text">
+          <p>At C4TH, we believe that the most powerful AI solutions are those designed with humans at the center. Our human-first methodology ensures that technology serves people, not the other way around.</p>
+          <br>
+          <p>We follow a collaborative process that begins with understanding human needs, behaviors, and context before selecting or developing AI technologies. This approach leads to solutions that integrate seamlessly into human workflows and enhance capabilities rather than create friction.</p>
+          <br>
+          <p>Our team combines expertise in cognitive science, UX design, and cutting-edge AI to create solutions that feel intuitive and augment human potential.</p>
+          <br>
+          <a href="#" class="cta-button">Learn More About Our Process</a>
+        </div>
+        <div class="approach-image">
+          <img src="/api/placeholder/500/360" alt="C4TH Human-Centered Approach" class="approach-img">
+          <div class="approach-img-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <p>Client Satisfaction</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">87+</div>
+          <p>Successful Projects</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">35%</div>
+          <p>Average Efficiency Gain</p>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">12+</div>
+          <p>Industries Served</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our <span class="highlight">Clients Say</span></h2>
+      <div class="testimonial-slider">
+        <div class="testimonial-card">
+          <p class="testimonial-quote">"C4TH transformed our customer service operations with AI that genuinely enhances our team's capabilities rather than replacing them. The result has been a 40% increase in resolution speed and happier employees."</p>
+          <div class="client-info">
+            <img src="/api/placeholder/60/60" alt="Client Avatar" class="client-avatar">
+            <div>
+              <p class="client-name">Sarah Johnson</p>
+              <p class="client-position">CTO, Global Retail Solutions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Ready to Transform Your Business <span class="highlight">With Human-Centered AI?</span></h2>
+      <p class="cta-text">Let's collaborate to create AI solutions that amplify your team's capabilities and drive meaningful business outcomes.</p>
+      <a href="#" class="cta-button">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <img src="/api/placeholder/150/40" alt="C4TH Logo" class="footer-logo">
+          <p class="footer-description">We design intelligent solutions that augment human capabilities, transforming businesses through human-centered AI.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon">Li</a>
+            <a href="#" class="social-icon">Tw</a>
+            <a href="#" class="social-icon">Fb</a>
+            <a href="#" class="social-icon">In</a>
+          </div>
+        </div>
+        <div class="footer-links-column">
+          <h4 class="footer-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="#">AI Strategy</a></li>
+            <li><a href="#">Process Automation</a></li>
+            <li><a href="#">Custom AI Solutions</a></li>
+            <li><a href="#">Data Analytics</a></li>
+            <li><a href="#">Implementation</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-column">
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-column">
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li>info@c4th.com</li>
+            <li>+1 (555) 123-4567</li>
+            <li>123 AI Avenue</li>
+            <li>Innovation District</li>
+            <li>New York, NY 10001</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 C4TH - Create For the Human. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
